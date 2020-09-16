@@ -1,4 +1,4 @@
-select ads.product, ads.dates
+select coalesce(ads.product, ga.product) prod, sum(ads.dates) ads_dates, sum(ga.dates) ga_dates
 from
 (SELECT 'BBOX' as product, count(distinct date) as dates 
 FROM `d3-projects-271420.MFB_extraction.ads_bbox_ext`
@@ -27,4 +27,4 @@ FROM `d3-projects-271420.MFB_extraction.ga_made_ext`
 where ga_date like '202009%') as ga
 
 on ads.product = ga.product
-group by product
+group by prod
