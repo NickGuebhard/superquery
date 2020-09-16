@@ -27,3 +27,4 @@ FROM `d3-projects-271420.MFB_extraction.ga_made_ext`
 where ga_date like '202009%') as ga
 
 on ads.product = ga.product
+group by product
