@@ -34,7 +34,7 @@ FROM `d3-projects-271420.MFB_extraction.ads_made_ext`
 where date >= '2020-01-01'
 group by date) as ads
 
-on ga.product = ads.product and ga.mth = ads.mth
+on ga.product = ads.product
 
 left JOIN
 
