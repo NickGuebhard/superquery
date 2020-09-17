@@ -1,4 +1,4 @@
-select ga.product as prod, coalesce(ga.platform, ads.platform, fb.platform) as plat, ga.mth as mth, sum(ga.transactions) as transactions, sum(ads.total_cost) as ads_cost, sum(fb.total_cost) as fb_cost
+select ga.product as product, ga.platform as platform, ga.mth as mth, sum(ga.transactions) as transactions, sum(ads.total_cost) as ads_cost, sum(fb.total_cost) as fb_cost
 from
 
 (SELECT 'BBOX' as product, sum(ga_transactions) as transactions, 'Google Analytics' as platform, substr(ga_date, 4, 2) as mth --count(distinct ga_date) as dates 
@@ -34,7 +34,7 @@ FROM `d3-projects-271420.MFB_extraction.ads_made_ext`
 where date >= '2020-01-01'
 group by date) as ads
 
-on ga.product = ads.product
+on ga.product = ads.product and ga.platform = ads.platform
 
 left JOIN
 
@@ -53,6 +53,6 @@ FROM `d3-projects-271420.MFB_extraction.fb_made_ext`
 where date_start >= '2020-01-01'
 group by date_start) as fb
 
-on ga.product = fb.product
+on ga.product = fb.product and ga.platform = fb.platform
 
-group by prod, plat, mth
+group by product, plat, mth
