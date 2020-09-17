@@ -1,4 +1,4 @@
-select ga.product as prod, ga.platform as plat, ga.mth as mth, sum(ga.transactions) as transactions, sum(ads.total_cost) as ads_cost, sum(fb.total_cost) as fb_cost
+select ga.product as prod, coalesce(ga.platform, ads.platform, fb.platform) as plat, ga.mth as mth, sum(ga.transactions) as transactions, sum(ads.total_cost) as ads_cost, sum(fb.total_cost) as fb_cost
 from
 
 (SELECT 'BBOX' as product, sum(ga_transactions) as transactions, 'Google Analytics' as platform, substr(ga_date, 4, 2) as mth --count(distinct ga_date) as dates 
