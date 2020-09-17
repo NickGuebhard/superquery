@@ -55,4 +55,4 @@ group by date_start) as fb
 
 on ga.product = fb.product and ga.platform = fb.platform
 
-group by product, plat, mth
+group by product, platform, mth
