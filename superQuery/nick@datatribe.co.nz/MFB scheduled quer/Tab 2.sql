@@ -1,3 +1,3 @@
-SELECT year_number
-FROM `d3-projects-271420.MFB_dashboard.MFB_master`
-GROUP BY year_number
+UPDate `d3-projects-271420.MFB_dashboard.MFB_master`
+set year_number = 0
+where year_number <1
