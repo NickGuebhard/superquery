@@ -1,4 +1,3 @@
-SELECT ga_sourceMedium
+SELECT platform
 FROM `d3-projects-271420.MFB_dashboard.MFB_master`
-where channelGrouping = 'Display'
-group by ga_sourceMedium
+group by platform
